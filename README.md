@@ -2,7 +2,7 @@
 ## Table of Contents
 1. [Project info](#project-info)
 2. [Repository files info](#repository-files-info)
-3. [Pre-requisite to scripts run](#pre-requisite)
+3. [Prerequisite to scripts run](#pre-requisite)
 4. [Database modelling](#database-modelling)
 5. [How to run the scripts](#how-to-run-the-scripts)
 
@@ -30,7 +30,7 @@ The JSON files consist of :
 
 
 ***
-### Pre-requisite to scripts run
+### Prerequisite to scripts run
 
 * Create a [postgre database](https://www.postgresqltutorial.com/install-postgresql/)
 * open Postgre `psql` terminal and run the sql statements included in  `initialization_of_studentdb_and_student_user.sql` in order to initialize studentdb database and student user.
@@ -96,7 +96,7 @@ Mapping rules from JSON files to the tables:
 |:--------------|:-------------|
 | start_time | *log_file.ts* |
 
-__Important note__ : `song_id` and and `artist_id` columns in `songplay` table are derived from the `song_file` JSON file via the query `song_select` in `sql_queries.py`.
+**<u>Important</u>** : `song_id` and and `artist_id` columns in `songplay` table are derived from the `song_file` JSON file via the query `song_select` in `sql_queries.py`.
 ***
 
 ## How to run the scripts
@@ -105,7 +105,8 @@ __Important note__ : `song_id` and and `artist_id` columns in `songplay` table a
 Once the postgre `studentdb` database and `student` user are created, run the scripts in the following order :
 > 1. run `create_tables.py` in the terminal in order to create the database `sparkifydb` if it does not exists, and drop/create the tables. This script is run once.
 > 2. run `etl.py` in the terminal in order to load JSON files and insert data into tables.
-> 3. Run the jupyter notebook `test.ipynb` in order to control the correct data insertion. It contains a query that should return 1 row with non null values `songid` and `artistid` in the fact table, based on the dataset provided in the repository.
+> 3. run the jupyter notebook `test.ipynb` in order to control the correct data insertion. 
+> 4. run `controls_and_analytics.ipynb` to get some analytics on the database.
 
 **<u>Important</u>** : Each time the notebooks `test.ipynb` or `etl.ipynb`are run, remember to restart/shutdown them to close the connection to your database. Otherwise, you won't be able to run your code in create_tables.py, etl.py, since you can't make multiple connections to the same database.
 
